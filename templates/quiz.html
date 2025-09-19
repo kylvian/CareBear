@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RC4 Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-image">
+  <div class="container">
+    <h1>Which house in RC4 truly suits you?</h1>
+
+    <!-- Question 1 -->
+    <div class="question active" id="q1">
+      <p>1. What’s your favourite common area in RC4?</p>
+      <button class="option" onclick="selectOption(0, 'Zi Jing is studious, hardworking and disciplined.')">Study Lounge</button>
+      <button class="option" onclick="selectOption(0, 'Zi Jing is sociable, community-oriented and a people person.')">Dining Hall</button>
+      <button class="option" onclick="selectOption(0, 'Zi Jing is energetic, athletic and a team player.')">MPSH (Multi-Purpose Sports Hall)</button>
+      <button class="option" onclick="selectOption(0, 'Zi Jing is creative, fun-loving and a morale booster.')">Games Lounge</button>
+      <button class="next-btn" onclick="nextQuestion(0)">Next</button>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question" id="q2">
+      <p>2. Which late-night RC4 activity appeals to you the most?</p>
+      <button class="option" onclick="selectOption(1, 'She is a diligent and collaborative worker.')">Studying with friends</button>
+      <button class="option" onclick="selectOption(1, 'She is an adventurous and decisive risk-taker.')">Midnight supper run</button>
+      <button class="option" onclick="selectOption(1, 'She is driven, competitive and goal-oriented.')">Basketball / badminton in MPSH</button>
+      <button class="option" onclick="selectOption(1, 'She is a strategic thinker and adapts well to change.')">Chilling with board games</button>
+      <button class="next-btn" onclick="nextQuestion(1)">Next</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question" id="q3">
+      <p>3. Which RC4 seminar room would you pick to host a project meeting?</p>
+      <button class="option" onclick="selectOption(2, 'Her leadership presence and big-picture thinking makes her a valuable employee.')">MPSH</button>
+      <button class="option" onclick="selectOption(2, 'Her attention to detail and empathetic attitude makes her a valuable team player.')">SR3 (cosy)</button>
+      <button class="option" onclick="selectOption(2, 'Her flexibility and pragmatism provides impeccable solution-driven ideas.')">Common Lounge</button>
+      <button class="option" onclick="selectOption(2, 'Her tech-savviness, independence, and resourcefulness truly stands out amongst the pool.')">Your own room</button>
+      <button class="next-btn" onclick="nextQuestion(2)">Next</button>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question" id="q4">
+      <p>4. What’s your favourite RC4 food vibe?</p>
+      <button class="option" onclick="selectOption(3, 'Zi Jing brings a global perspective and adapts well to new experiences.')">Western</button>
+      <button class="option" onclick="selectOption(3, 'Her grounded nature and appreciation for tradition make her thoughtful.')">Asian</button>
+      <button class="option" onclick="selectOption(3, 'She is disciplined, health-conscious, and makes mindful choices.')">Vegetarian</button>
+      <button class="option" onclick="selectOption(3, 'Zi Jing is unconventional and thinks quickly under pressure.')">Meal Enhancements only</button>
+      <button class="next-btn" onclick="nextQuestion(3)">Next</button>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question" id="q5">
+      <p>5. Which RC4 event excites you the most?</p>
+      <button class="option" onclick="selectOption(4, 'Her strong leadership and mentoring skills stand out in team settings.')">Orientation Camp</button>
+      <button class="option" onclick="selectOption(4, 'Zi Jing demonstrates analytical thinking and intellectual curiosity.')">Symposiums</button>
+      <button class="option" onclick="selectOption(4, 'She is outgoing and excels at networking with diverse groups.')">Formal Dinner</button>
+      <button class="option" onclick="selectOption(4, 'Her resilience and drive help her thrive in competitive environments.')">IHG</button>
+      <button class="next-btn" onclick="nextQuestion(4)">Next</button>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question" id="q6">
+      <p>6. How do you usually get to class from RC4?</p>
+      <button class="option" onclick="selectOption(5, 'Zi Jing is reliable, steady, and dependable.')">Walk calmly</button>
+      <button class="option" onclick="selectOption(5, 'She thrives under pressure and is a quick learner.')">Run last minute</button>
+      <button class="option" onclick="selectOption(5, 'Her efficiency and forward-thinking approach are commendable.')">Cycle</button>
+      <button class="option" onclick="selectOption(5, 'Zi Jing is resourceful and knows how to leverage systems effectively.')">Grab</button>
+      <button class="next-btn" onclick="nextQuestion(5)">Finish</button>
+    </div>
+
+
+    <!-- Hidden form to submit answers -->
+    <form id="resultForm" action="{{ url_for('result') }}" method="POST" style="display:none;">
+      <input type="hidden" name="sentences" id="sentencesInput">
+    </form>
+  </div>
+
+  <script>
+    let answers = [];
+    let selectedAnswers = {};
+    const questions = document.querySelectorAll('.question');
+
+    function selectOption(index, sentence) {
+      selectedAnswers[index] = sentence;
+      const buttons = questions[index].querySelectorAll('.option');
+      buttons.forEach(btn => btn.style.borderColor = '#ddd');
+      event.target.style.borderColor = '#6c63ff';
+    }
+
+    function nextQuestion(index) {
+      if (!(index in selectedAnswers)) {
+        alert("Please select an option before continuing!");
+        return;
+      }
+      answers.push(selectedAnswers[index]);
+      questions[index].classList.remove('active');
+
+      if (index + 1 < questions.length) {
+        questions[index + 1].classList.add('active');
+      } else {
+        document.getElementById('sentencesInput').value = JSON.stringify(answers);
+        document.getElementById('resultForm').submit();
+      }
+    }
+  </script>
+</body>
+</html>
+

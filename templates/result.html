@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application for Employment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #fdfaf3; /* cream background */
+    }
+    .container {
+      width: 800px;
+      margin: auto;
+      border: 2px solid #000;
+      padding: 20px;
+      background: #ffffff; /* white form background */
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 150px;
+      height: 80px;
+      border: 1px solid #ccc;
+      margin: auto;
+      background: url('logo.jpg') no-repeat center;
+      background-size: contain;
+    }
+    h1 {
+      margin-top: 10px;
+      font-size: 22px;
+    }
+    h2 {
+      margin: 15px 0 5px;
+      background: #000;
+      color: #fff;
+      padding: 5px;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+    .section {
+      margin-bottom: 15px;
+    }
+    .field {
+      margin: 8px 0;
+    }
+    .question {
+      font-weight: bold;
+      display: inline-block;
+      min-width: 260px;
+    }
+    .answer-line {
+      display: inline-block;
+      border-bottom: 1px solid #000;
+      min-width: 400px;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    .checkbox {
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .recommendation {
+      border: 1px solid #000;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo"></div>
+      <h1>APPLICATION FOR EMPLOYMENT</h1>
+    </div>
+
+    <div class="section">
+      <div class="field"><span class="question">Name:</span> <span class="answer-line">Zi Jing</span></div>
+      <div class="field"><span class="question">Position You Are Applying For:</span> <span class="answer-line">Dog Researcher</span></div>
+      <div class="field"><span class="question">Desired Salary:</span> <span class="answer-line">$6,769,420/year</span></div>
+      <div class="field"><span class="question">Dates Available for Work:</span> <span class="answer-line">Every Day</span></div>
+    </div>
+
+    <h2>PERSONAL INFORMATION</h2>
+    <div class="section">
+      <div class="field"><span class="question">Address:</span> <span class="answer-line">Residential College 4</span></div>
+      <div class="field"><span class="question">City:</span> <span class="answer-line">Singapore</span></div>
+      <div class="field">
+        <span class="question">Have you ever been convicted of a felony?</span><br>
+        <label class="checkbox">☑ <span class="answer-line">Yes — stealing dogs</span></label>
+        <label class="checkbox">☐ <span class="answer-line">No</span></label>
+      </div>
+    </div>
+
+    <h2>EDUCATION</h2>
+    <div class="section">
+      <div class="field"><span class="answer-line">NUS Environmental Studies, 1st Class Honors</span></div>
+    </div>
+
+    <h2>RECOMMENDATION</h2>
+    <div class="section recommendation">
+      <p>{{ paragraph|safe }}</p>
+    </div>
+  </div>
+</body>
+</html>

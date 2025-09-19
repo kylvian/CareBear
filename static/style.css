@@ -1,0 +1,98 @@
+/* Global font */
+body {
+  font-family: 'Work Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background image for title & quiz pages */
+.bg-image {
+  background: url("/static/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container styling */
+.container {
+  background: rgba(255, 255, 255, 0.85); /* semi-transparent card */
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Title and welcome text */
+h1.title {
+  font-size: 3.2rem;
+  margin-bottom: 30px;
+}
+
+h2.welcome {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Big button for starting quiz */
+.big {
+  font-size: 1.3rem;
+  padding: 16px 28px;
+  border-radius: 14px;
+  border: none;
+  background: #6c63ff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.big:hover {
+  background: #5548e2;
+}
+
+/* Quiz questions */
+.question {
+  display: none;
+}
+
+.question.active {
+  display: block;
+}
+
+.option {
+  display: block;
+  background: #f7f9ff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  font-size: 1.1em;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.option:hover {
+  background: #e5e9ff;
+  border-color: #6c63ff;
+}
+
+.next-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+  background: #6c63ff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.next-btn:hover {
+  background: #5548e2;
+}
